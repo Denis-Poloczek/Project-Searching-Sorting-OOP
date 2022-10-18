@@ -20,7 +20,12 @@
 #         method_choosen = sorting_manager.methods_details[answer]
 #         sorting_manager.method_choosen([3,7,3,4])
 
+from application_brain import ApplicationBrain
 
+application_brain = ApplicationBrain()
+
+while application_brain.state == 0:
+    choice_1 = application_brain.sorting_or_searching()
 
 
 
