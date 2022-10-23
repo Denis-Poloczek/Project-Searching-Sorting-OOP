@@ -2,8 +2,6 @@ from manager import Manager
 from class_data import *
 import math
 
-from sorting_manager import SortingManager
-
 
 class SearchingManager(Manager):
 
@@ -21,12 +19,12 @@ class SearchingManager(Manager):
         return "element has not been found!"
 
     def jump_search(self, list_of_elements, target):
-        """Please provide 2 arguments: a list of elements and the target you are looking for"""
+        """Please provide 2 arguments: a list of sorted** elements and the target you are looking for"""
 
         jump_size = math.sqrt(len(list_of_elements))
 
         block = 0
-        while list_of_elements[int(min(jump_size, len(list_of_elements) - 1))] < target:
+        while list_of_elements[int(min(jump_size, len(list_of_elements)) - 1)] < target:
             block = int(jump_size)
             jump_size += math.sqrt(len(list_of_elements))
             if block >= len(list_of_elements):
@@ -105,15 +103,5 @@ class SearchingManager(Manager):
         return self.binary_search(list_of_elements, i // 2, min(i, len(list_of_elements) - 1), target)
 
 
-
-
-
-
-
-testing_manager = SearchingManager()
-
-testing_list = [1,3,7,19,45,60,78,90,107,345]
-
-
-
-print(testing_manager.jump_search(testing_list,  90))
+s = SearchingManager()
+print(s.jump_search([1,2,3,45,66], 45))

@@ -19,11 +19,11 @@ class SortingManager(Manager):
 
             while (j > 0) & (list_of_elements[j - 1] > checked_element):
                 list_of_elements[j] = list_of_elements[j - 1]
-                print(list_of_elements)
+
                 j -= 1
 
             list_of_elements[j] = checked_element
-            print(list_of_elements)
+
            
     def selection_sort(self, list_of_elements):
         """Please provide just one argument: a list of elements that needs to be sorted"""

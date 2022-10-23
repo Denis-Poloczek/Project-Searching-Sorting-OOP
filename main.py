@@ -1,35 +1,17 @@
-# from sorting_manager import SortingManager
-# from searching_manager import SearchingManager
-#
-#
-# termination_flag = False
-#
-# while not termination_flag:
-#
-#     sorting_manager = SortingManager()
-#     searching_manager = SearchingManager()
-#
-#
-#     print("Please choose either 1 for sorting your list or 2 for searching your list ")
-#     answer = int(input("Please enter your choice: "))
-#
-#     if answer == 1:
-#         print("Availble soritng methods are as follows")
-#         sorting_manager.get_available_methods()
-#         answer = int(input("Please choose the number next to a method you would like to use: "))
-#         method_choosen = sorting_manager.methods_details[answer]
-#         sorting_manager.method_choosen([3,7,3,4])
-
 from application_brain import ApplicationBrain
+from class_data import *
+app_brain = ApplicationBrain()
+print(ascii_art_1)
 
-application_brain = ApplicationBrain()
+running_flag = True
 
-while application_brain.state == 0:
-    choice_1 = application_brain.sorting_or_searching()
-
-
-
-
-
+while app_brain.get_state() != 3:
+    app_brain.sorting_or_searching_choice()
+    if app_brain.get_state() == 3:
+        break
+    user_list = app_brain.list_choice()
+    method = app_brain.method_choice()
+    result = app_brain.result(method, user_list)
+    print(user_list)
 
 
