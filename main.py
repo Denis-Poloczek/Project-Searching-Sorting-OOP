@@ -9,9 +9,22 @@ while app_brain.get_state() != 3:
     app_brain.sorting_or_searching_choice()
     if app_brain.get_state() == 3:
         break
-    user_list = app_brain.list_choice()
+
     method = app_brain.method_choice()
+
+    if app_brain.get_state() == 1 and method == 7:
+        user_list = app_brain.bucket_sort_list_choice()
+    elif app_brain.get_state() == 2 and method != 1:
+        user_list = app_brain.list_choice()
+        while app_brain.is_user_list_sorted(user_list):
+            user_list = app_brain.list_choice()
+    else:
+        user_list = app_brain.list_choice()
+
     result = app_brain.result(method, user_list)
-    print(user_list)
+    if app_brain.get_state() == 1:
+        print(f"The sorted list is {user_list}\n")
+
+
 
 

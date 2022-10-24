@@ -112,10 +112,10 @@ class ApplicationBrain():
 
     def list_choice(self):
         users_list = []
-        answear = input("Please specify how many numbers would you like to have in your list:\n")
+        answear = input("Please specify how many elements would you like to have in your list:\n")
         while not answear.isdigit():
             answear = input("You have used a non-digit sequence, please try one more time and specify "
-                            "how many numbers would you like to have in your list:\n")
+                            "how many elements would you like to have in your list:\n")
         for i in range(int(answear)):
             answear_num = input(f"Please provide the element of index {i}: \n")
             while not answear_num.isdigit():
