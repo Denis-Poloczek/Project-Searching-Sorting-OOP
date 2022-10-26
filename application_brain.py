@@ -71,6 +71,7 @@ class ApplicationBrain():
                     continue
                 else:
                     break
+            return answear
         else:
             return
 
@@ -103,7 +104,7 @@ class ApplicationBrain():
                 case 2:
                     print(f"The index of search is {searching_manager.jump_search(user_list, user_target)}\n")
                 case 3:
-                    print(f"The index of search is {searching_manager.binary_search(user_list, 0, len(user_list) - 1, user_target)}\n")
+                    return searching_manager.binary_search(user_list, 0, len(user_list), user_target)
                 case 4:
                     print(f"The index of search is {searching_manager.interpolation_search(user_list, 0, len(user_list) - 1, user_target)}\n")
                 case 5:
@@ -126,6 +127,33 @@ class ApplicationBrain():
         print(f"The list that you provided is: {users_list}\n")
 
         return users_list
+
+    def sorted_list_choice(self):
+
+        print("You have chosen a method of search that requires sorted list!\n")
+        users_list = []
+
+        while True:
+
+            answear = input("Please specify how many elements would you like to have in your list:\n")
+            while not answear.isdigit():
+                answear = input("You have used a non-digit sequence, please try one more time and specify "
+                            "how many elements would you like to have in your list:\n")
+            for i in range(int(answear)):
+                answear_num = input(f"Please provide the element of index {i}: \n")
+                while not answear_num.isdigit():
+                    answear_num = input(
+                    "You have tried a non-digit sequence, please try one more time to provide number:  \n")
+                users_list.append(int(answear_num))
+            if sorted(users_list) == users_list:
+                break
+            print("You have provided an unsorted list of elements! Please try one more time")
+            users_list = []
+
+        print(f"The list that you provided is: {users_list}\n")
+
+        return users_list
+
 
     def is_user_list_sorted(self, user_list):
         if user_list == user_list.sort():
@@ -157,20 +185,5 @@ class ApplicationBrain():
         return users_list
 
 
-
-
-# app_brain = ApplicationBrain()
-
-# app_brain.sorting_or_searching_choice()
-# method = app_brain.method_choice()
-#
-# user_list_ch = app_brain.list_choice()
-#
-# start_time = time.time()
-# app_brain.result(method, user_list_ch)
-# print(user_list_ch)
-# end_time = time.time()
-# app_brain.bucket_sort_list_choice()
-# print(f"It took {round(end_time - start_time,6)} ms to execute")
-
-
+app = ApplicationBrain()
+app.sorted_list_choice()

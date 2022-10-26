@@ -15,15 +15,17 @@ while app_brain.get_state() != 3:
     if app_brain.get_state() == 1 and method == 7:
         user_list = app_brain.bucket_sort_list_choice()
     elif app_brain.get_state() == 2 and method != 1:
-        user_list = app_brain.list_choice()
-        while app_brain.is_user_list_sorted(user_list):
-            user_list = app_brain.list_choice()
+        user_list = app_brain.sorted_list_choice()
     else:
         user_list = app_brain.list_choice()
 
     result = app_brain.result(method, user_list)
+
     if app_brain.get_state() == 1:
         print(f"The sorted list is {user_list}\n")
+    else:
+        print(f"The result of the search is: {result}")
+
 
 
 
