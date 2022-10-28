@@ -18,7 +18,7 @@ class ApplicationBrain():
 
     def sorting_or_searching_choice(self):
         answear = input("Please type 1 if you want to sort or type 2 if you want to search, otherwise if you "
-                            "want to quite the program press 3: \n\n")
+                        "want to quite the program press 3: \n\n")
         while not answear.isdigit():
             answear = input("You have used a non-digit sequence, please try one more time and specify "
                             "options you want to choose:\n")
@@ -28,7 +28,7 @@ class ApplicationBrain():
             self.change_state(2)
         elif int(answear) == 3:
             print("The app is shut down, thank you for using the searching and sorting app \n")
-            print(ascii_art_2)
+            print(ascii_art_goodbye)
             self.change_state(3)
         else:
             print(f"Please try again the answear {answear} is not an allowed choice \n")
@@ -41,9 +41,11 @@ class ApplicationBrain():
             while True:
                 try:
                     answear = int(input(
-                        f"Please provide the number corresponding to your chosen {self.choice_list[self.state]}ing method:\n"))
+                        f"Please provide the number corresponding to your "
+                        f"chosen {self.choice_list[self.state]}ing method:\n"))
                     if not 1 <= int(answear) <= 7:
-                        answear = int(input("Try one more time - you have chosen value outside of 1 to 7 range!\n"))
+                        answear = int(input("Try one more time - you have chosen "
+                                            "value outside of 1 to 7 range!\n"))
                 except ValueError:
                     print("You have provided non-integer value !\n")
                     continue
@@ -60,7 +62,8 @@ class ApplicationBrain():
             while True:
                 try:
                     answear = int(input(
-                        f"Please provide the number corresponding to your chosen {self.choice_list[self.state]}ing method:\n"))
+                        f"Please provide the number corresponding to your "
+                        f"chosen {self.choice_list[self.state]}ing method:\n"))
                     if not 1 <= int(answear) <= 5:
                         answear = int(input("Try one more time - you have chosen value outside of 1 to 5 range!\n"))
                 except ValueError:
@@ -78,6 +81,7 @@ class ApplicationBrain():
             return answear
 
     def result(self, method_choice, user_list):
+
         if self.get_state() == 1:
             sorting_manager = SortingManager()
             match method_choice:
@@ -95,20 +99,21 @@ class ApplicationBrain():
                     sorting_manager.quicksort(user_list, 0, len(user_list) - 1)
                 case 7:
                     sorting_manager.bucket_sort(user_list)
+
         elif self.get_state() == 2:
             searching_manager = SearchingManager()
-            user_target = int(input("please provide your target for the searching procedure: \n"))
+            user_target = int(input("Please provide your target for the searching procedure: \n"))
             match method_choice:
                 case 1:
-                    print(f"The index of search is {searching_manager.linear_search(user_list, user_target)}\n")
+                    return searching_manager.linear_search(user_list, user_target)
                 case 2:
-                    print(f"The index of search is {searching_manager.jump_search(user_list, user_target)}\n")
+                    return searching_manager.jump_search(user_list, user_target)
                 case 3:
                     return searching_manager.binary_search(user_list, 0, len(user_list), user_target)
                 case 4:
-                    print(f"The index of search is {searching_manager.interpolation_search(user_list, 0, len(user_list) - 1, user_target)}\n")
+                    return searching_manager.interpolation_search(user_list, 0, len(user_list) - 1, user_target)
                 case 5:
-                    print(f"The index of search is {searching_manager.exponential_search(user_list, user_target)}\n")
+                    return searching_manager.exponential_search(user_list, user_target)
 
 
     def list_choice(self):
@@ -124,7 +129,7 @@ class ApplicationBrain():
                     "You have tried a non-digit sequence, please try one more time to provide number:  \n")
             users_list.append(int(answear_num))
 
-        print(f"The list that you provided is: {users_list}\n")
+        print(f"\nThe list that you provided is: {users_list}\n")
 
         return users_list
 
@@ -150,7 +155,7 @@ class ApplicationBrain():
             print("You have provided an unsorted list of elements! Please try one more time")
             users_list = []
 
-        print(f"The list that you provided is: {users_list}\n")
+        print(f"\nThe list that you provided is: {users_list}\n")
 
         return users_list
 
@@ -180,10 +185,7 @@ class ApplicationBrain():
                     break
             users_list.append(float(num))
 
-        print(f"The list that you provided is: {users_list}\n")
+        print(f"\nThe list that you provided is: {users_list}\n")
 
         return users_list
 
-
-app = ApplicationBrain()
-app.sorted_list_choice()

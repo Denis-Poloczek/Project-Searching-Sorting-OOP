@@ -103,5 +103,3 @@ class SearchingManager(Manager):
         return self.binary_search(list_of_elements, i // 2, min(i, len(list_of_elements) - 1), target)
 
 
-# s = SearchingManager()
-# print(s.binary_search([2, 5, 7, 9],0, 4,  7))
