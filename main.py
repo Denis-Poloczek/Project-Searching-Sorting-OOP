@@ -3,8 +3,6 @@ from class_data import *
 app_brain = ApplicationBrain()
 print(ascii_art_welcome)
 
-running_flag = True
-
 while app_brain.get_state() != 3:
     app_brain.sorting_or_searching_choice()
     if app_brain.get_state() == 3:
@@ -21,16 +19,15 @@ while app_brain.get_state() != 3:
 
     result = app_brain.result(method, user_list)
 
-    print(ascii_art_result_1)
-
+    print(ascii_art_result)
     if app_brain.get_state() == 1:
         print(f"You have used the {sorting_methods_dict[method].lower()} method for sorting. "
               f"The sorted list is: {user_list}")
     else:
-        print(f"\nYou have used the {searching_methods_dict[method].lower()} method for searching. The target of "
+        print(f"You have used the {searching_methods_dict[method].lower()} method for searching. The target of "
               f"the search is at index: {result}")
-
-    print(ascii_art_result_2)
+    print(ascii_art_result)
+    print("Procedure end")
 
 
 

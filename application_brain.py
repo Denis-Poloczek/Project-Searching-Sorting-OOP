@@ -1,9 +1,9 @@
 from sorting_manager import SortingManager
 from searching_manager import SearchingManager
 from class_data import *
-import time
 
-class ApplicationBrain():
+
+class ApplicationBrain:
 
     def __init__(self):
         self.choice_list = None
@@ -17,21 +17,26 @@ class ApplicationBrain():
         return self.state
 
     def sorting_or_searching_choice(self):
-        answear = input("Please type 1 if you want to sort or type 2 if you want to search, otherwise if you "
-                        "want to quite the program press 3: \n\n")
-        while not answear.isdigit():
-            answear = input("You have used a non-digit sequence, please try one more time and specify "
-                            "options you want to choose:\n")
-        if int(answear) == 1:
-            self.change_state(1)
-        elif int(answear) == 2:
-            self.change_state(2)
-        elif int(answear) == 3:
-            print("The app is shut down, thank you for using the searching and sorting app \n")
-            print(ascii_art_goodbye)
-            self.change_state(3)
-        else:
-            print(f"Please try again the answear {answear} is not an allowed choice \n")
+
+        while True:
+            answer = input("Please type 1 if you want to sort or type 2 if you want to search, otherwise if you "
+                           "want to quite the program press 3: \n\n")
+            while not answer.isdigit():
+                answer = input("You have used a non-digit sequence, please try one more time and specify "
+                               "options you want to choose:\n")
+            if int(answer) == 1:
+                self.change_state(1)
+                break
+            elif int(answer) == 2:
+                self.change_state(2)
+                break
+            elif int(answer) == 3:
+                print("The app is shut down, thank you for using the searching and sorting app \n")
+                print(ascii_art_goodbye)
+                self.change_state(3)
+                break
+            else:
+                print(f"Please try again the answer {answer} is not an allowed choice \n")
 
     def method_choice(self):
         if self.get_state() == 1:
@@ -40,45 +45,45 @@ class ApplicationBrain():
                 print(f"Choose {number} for {method}\n")
             while True:
                 try:
-                    answear = int(input(
+                    answer = int(input(
                         f"Please provide the number corresponding to your "
                         f"chosen {self.choice_list[self.state]}ing method:\n"))
-                    if not 1 <= int(answear) <= 7:
-                        answear = int(input("Try one more time - you have chosen "
-                                            "value outside of 1 to 7 range!\n"))
+                    if not 1 <= int(answer) <= 7:
+                        answer = int(input("Try one more time - you have chosen "
+                                           "value outside of 1 to 7 range!\n"))
                 except ValueError:
                     print("You have provided non-integer value !\n")
                     continue
-                if not 1 <= int(answear) <= 7:
+                if not 1 <= int(answer) <= 7:
                     print("Try one more time - you have chosen value outside of 1 to 7 range!\n")
                     continue
                 else:
                     break
-            return answear
+            return answer
         elif self.get_state() == 2:
             print(f"\nYou can use the following method for {self.choice_list[self.state]}ing:\n")
             for number, method in searching_methods_dict.items():
                 print(f"Choose {number} for {method}\n")
             while True:
                 try:
-                    answear = int(input(
+                    answer = int(input(
                         f"Please provide the number corresponding to your "
                         f"chosen {self.choice_list[self.state]}ing method:\n"))
-                    if not 1 <= int(answear) <= 5:
-                        answear = int(input("Try one more time - you have chosen value outside of 1 to 5 range!\n"))
+                    if not 1 <= int(answer) <= 5:
+                        answer = int(input("Try one more time - you have chosen value outside of 1 to 5 range!\n"))
                 except ValueError:
                     print("You have provided non-integer value!\n")
                     continue
-                if not 1 <= int(answear) <= 5:
+                if not 1 <= int(answer) <= 5:
                     print("Try one more time - you have chosen value outside of 1 to 5 range!\n")
                     continue
                 else:
                     break
-            return answear
+            return answer
         else:
             return
 
-            return answear
+            return answer
 
     def result(self, method_choice, user_list):
 
@@ -115,19 +120,19 @@ class ApplicationBrain():
                 case 5:
                     return searching_manager.exponential_search(user_list, user_target)
 
-
     def list_choice(self):
+
         users_list = []
-        answear = input("Please specify how many elements would you like to have in your list:\n")
-        while not answear.isdigit():
-            answear = input("You have used a non-digit sequence, please try one more time and specify "
-                            "how many elements would you like to have in your list:\n")
-        for i in range(int(answear)):
-            answear_num = input(f"Please provide the element of index {i}: \n")
-            while not answear_num.isdigit():
-                answear_num = input(
+        answer = input("Please specify how many elements would you like to have in your list:\n")
+        while not answer.isdigit():
+            answer = input("You have used a non-digit sequence, please try one more time and specify "
+                           "how many elements would you like to have in your list:\n")
+        for i in range(int(answer)):
+            answer_num = input(f"Please provide the element of index {i}: \n")
+            while not answer_num.isdigit():
+                answer_num = input(
                     "You have tried a non-digit sequence, please try one more time to provide number:  \n")
-            users_list.append(int(answear_num))
+            users_list.append(int(answer_num))
 
         print(f"\nThe list that you provided is: {users_list}\n")
 
@@ -140,25 +145,28 @@ class ApplicationBrain():
 
         while True:
 
-            answear = input("Please specify how many elements would you like to have in your list:\n")
-            while not answear.isdigit():
-                answear = input("You have used a non-digit sequence, please try one more time and specify "
-                            "how many elements would you like to have in your list:\n")
-            for i in range(int(answear)):
-                answear_num = input(f"Please provide the element of index {i}: \n")
-                while not answear_num.isdigit():
-                    answear_num = input(
-                    "You have tried a non-digit sequence, please try one more time to provide number:  \n")
-                users_list.append(int(answear_num))
+            answer = input("Please specify how many elements would you like to have in your list:\n")
+            while not answer.isdigit():
+                answer = input("You have used a non-digit sequence, please try one more time and specify "
+                               "how many elements would you like to have in your list:\n")
+
+            for i in range(int(answer)):
+                answer_num = input(f"Please provide the element of index {i}: \n")
+                while not answer_num.isdigit():
+                    answer_num = input(
+                        "You have tried a non-digit sequence, please try one more time to provide number:  \n")
+                users_list.append(int(answer_num))
+
             if sorted(users_list) == users_list:
                 break
+
             print("You have provided an unsorted list of elements! Please try one more time")
+
             users_list = []
 
         print(f"\nThe list that you provided is: {users_list}\n")
 
         return users_list
-
 
     def is_user_list_sorted(self, user_list):
         if user_list == user_list.sort():
@@ -167,11 +175,11 @@ class ApplicationBrain():
 
     def bucket_sort_list_choice(self):
         users_list = []
-        answear = input("Please specify how many numbers would you like to have in your list:\n")
-        while not answear.isdigit():
-            answear = input("You have used a non-digit sequence, please try one more time and specify "
-                            "how many numbers would you like to have in your list:\n")
-        for i in range(int(answear)):
+        answer = input("Please specify how many numbers would you like to have in your list:\n")
+        while not answer.isdigit():
+            answer = input("You have used a non-digit sequence, please try one more time and specify "
+                           "how many numbers would you like to have in your list:\n")
+        for i in range(int(answer)):
             while True:
                 try:
                     num = float(input(f"Please provide the float element between 0 and 1 of index {i} to your list:\n"))
@@ -188,4 +196,3 @@ class ApplicationBrain():
         print(f"\nThe list that you provided is: {users_list}\n")
 
         return users_list
-

@@ -11,7 +11,7 @@ class SearchingManager(Manager):
         self.methods_details = searching_methods_details_dict
 
     def linear_search(self, list_of_elements, target):
-        """Please provide 2 arguments: a list of elements and the target you are looking for"""
+        """2 arguments: a list of elements and the target you are looking for"""
 
         for element in list_of_elements:
             if element == target:
@@ -19,7 +19,7 @@ class SearchingManager(Manager):
         return "element has not been found!"
 
     def jump_search(self, list_of_elements, target):
-        """Please provide 2 arguments: a list of sorted** elements and the target you are looking for"""
+        """2 arguments: a list of sorted** elements and the target you are looking for"""
 
         jump_size = math.sqrt(len(list_of_elements))
 
@@ -47,7 +47,7 @@ class SearchingManager(Manager):
         return False
 
     def binary_search(self, list_of_elements, start_idx, end_idx, target):
-        """Please provide 2 arguments: a list of sorted elements and the target you are looking for"""
+        """2 arguments: a list of sorted elements and the target you are looking for"""
 
         if not self.is_sorted_helper(list_of_elements):
             return "Please provide a sorted list for this search method"
@@ -66,7 +66,7 @@ class SearchingManager(Manager):
         return "element has not been found!"
 
     def interpolation_search(self, list_of_elements, low_idx, up_idx, target):
-        """Please provide 4 arguments: a list of sorted elements, the target you are looking for,
+        """4 arguments: a list of sorted elements, the target you are looking for,
         lower and upper indexes of your searched list"""
 
         if not self.is_sorted_helper(list_of_elements):
@@ -89,7 +89,7 @@ class SearchingManager(Manager):
         return "Element has not been found!"
 
     def exponential_search(self, list_of_elements, target):
-        """Please provide 2 arguments: a list of sorted elements and the target you are looking for"""
+        """2 arguments: a list of sorted elements and the target you are looking for"""
 
         if not self.is_sorted_helper(list_of_elements):
             return "Please provide a sorted list for this search method"

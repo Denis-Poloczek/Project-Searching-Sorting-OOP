@@ -11,7 +11,7 @@ class SortingManager(Manager):
         self.methods_details = sorting_methods_details_dict
 
     def insertion_sort(self, list_of_elements):
-        """Please provide just one argument: a list of elements that needs to be sorted"""
+        """1 argument: a list of elements that needs to be sorted"""
 
         for i in range(1, len(list_of_elements)):
             j = i
@@ -26,7 +26,7 @@ class SortingManager(Manager):
 
            
     def selection_sort(self, list_of_elements):
-        """Please provide just one argument: a list of elements that needs to be sorted"""
+        """1 argument: a list of elements that needs to be sorted"""
 
         for i in range(len(list_of_elements)):
             min_index = i
@@ -38,7 +38,7 @@ class SortingManager(Manager):
             (list_of_elements[i], list_of_elements[min_index]) = (list_of_elements[min_index], list_of_elements[i])
 
     def shell_sort(self, list_of_elements):
-        """Please provide just one argument: a list of elements that needs to be sorted"""
+        """ 1 argument: a list of elements that needs to be sorted"""
 
         gap = len(list_of_elements) // 2
 
@@ -56,7 +56,7 @@ class SortingManager(Manager):
             gap //= 2
 
     def bubble_sort(self, list_of_elements):
-        """Please provide just one argument: a list of elements that needs to be sorted"""
+        """1 argument: a list of elements that needs to be sorted"""
 
         for i in range(len(list_of_elements)):
 
@@ -66,7 +66,7 @@ class SortingManager(Manager):
                     list_of_elements[j], list_of_elements[j + 1] = list_of_elements[j + 1], list_of_elements[j]
 
     def merge_sort(self, list_of_elements):
-        """Please provide just one argument: a list of elements that needs to be sorted"""
+        """1 argument: a list of elements that needs to be sorted"""
 
         if len(list_of_elements) > 1:
 
@@ -101,7 +101,7 @@ class SortingManager(Manager):
                 k += 1
 
     def quicksort(self, list_of_elements, beginning, end):
-        """Please provide 3 arguments: list that needs to be sorted, start index and last index of the list"""
+        """3 arguments: list that needs to be sorted, start index and last index of the list"""
 
         if beginning >= end:
             return
@@ -125,7 +125,7 @@ class SortingManager(Manager):
         self.quicksort(list_of_elements, less_than_pointer + 1, end)
 
     def bucket_sort(self, list_of_elements):
-        """Please provide just one argument: a list of elements that needs to be sorted,
+        """1 argument: a list of elements that needs to be sorted,
         elements should be in the range of (0,1)"""
 
         def sorting_helper(bucket_to_be_sorted):
