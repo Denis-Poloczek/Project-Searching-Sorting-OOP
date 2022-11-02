@@ -16,7 +16,7 @@ class SearchingManager(Manager):
         for element in list_of_elements:
             if element == target:
                 return list_of_elements.index(element)
-        return "element has not been found!"
+        return "Element has not been found!"
 
     def jump_search(self, list_of_elements, target):
         """2 arguments: a list of sorted** elements and the target you are looking for"""
@@ -28,7 +28,7 @@ class SearchingManager(Manager):
             block = int(jump_size)
             jump_size += math.sqrt(len(list_of_elements))
             if block >= len(list_of_elements):
-                return "Element has not been found"
+                return "Element has not been found!"
 
         while list_of_elements[int(block)] < target:
             block += 1
@@ -39,7 +39,7 @@ class SearchingManager(Manager):
         if list_of_elements[int(block)] == target:
             return block
 
-        return "Element has not been found"
+        return "Element has not been found!"
 
     def is_sorted_helper(self, list_of_elements):
         if list_of_elements == sorted(list_of_elements):
@@ -63,7 +63,7 @@ class SearchingManager(Manager):
             else:
                 end_idx = mid - 1
 
-        return "element has not been found!"
+        return "Element has not been found!"
 
     def interpolation_search(self, list_of_elements, low_idx, up_idx, target):
         """4 arguments: a list of sorted elements, the target you are looking for,
@@ -73,6 +73,9 @@ class SearchingManager(Manager):
             return "Please provide a sorted list for this search method"
 
         if low_idx <= up_idx and list_of_elements[low_idx] <= target <= list_of_elements[up_idx]:
+
+            if list_of_elements[low_idx] == list_of_elements[up_idx]:
+                return low_idx
 
             pivot = low_idx + ((up_idx - low_idx) // (list_of_elements[up_idx] - list_of_elements[low_idx])) * \
                     (target - list_of_elements[low_idx])
@@ -101,5 +104,4 @@ class SearchingManager(Manager):
         while i < len(list_of_elements) and list_of_elements[i] <= target:
             i = i * 2
         return self.binary_search(list_of_elements, i // 2, min(i, len(list_of_elements) - 1), target)
-
 

@@ -1,10 +1,12 @@
 from application_brain import ApplicationBrain
 from class_data import *
+
 app_brain = ApplicationBrain()
 print(ascii_art_welcome)
 
 while app_brain.get_state() != 3:
     app_brain.sorting_or_searching_choice()
+
     if app_brain.get_state() == 3:
         break
 
@@ -24,10 +26,13 @@ while app_brain.get_state() != 3:
         print(f"You have used the {sorting_methods_dict[method].lower()} method for sorting. "
               f"The sorted list is: {user_list}")
     else:
-        print(f"You have used the {searching_methods_dict[method].lower()} method for searching. The target of "
-              f"the search is at index: {result}")
+        if result != "Element has not been found!":
+            print(f"You have used the {searching_methods_dict[method].lower()} method for searching. The target of "
+                  f"the search is at index: {result}")
+        else:
+            print("The element has not been found in the provided list!")
     print(ascii_art_result)
-    print("Procedure end")
+    print("*** Procedure ended with success ***\n")
 
 
 
