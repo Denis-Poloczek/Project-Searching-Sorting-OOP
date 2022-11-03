@@ -19,3 +19,11 @@ The sorting procedure is chosen here.
 * searching_manager.py
 * class_data.py
 * manager.py
+
+```python
+class Manager():
+  
+  def __init__(self):
+    self.variable = 0
+    
+```
