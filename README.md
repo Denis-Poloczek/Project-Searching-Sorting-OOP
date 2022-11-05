@@ -1,11 +1,11 @@
 # AGH Final Project
 
-### This codebase contains final project for bachlor's thesis
+## This codebase contains final project for bachlor's thesis
 
 Below you can see the preview of main.py running the main loop.
 The sorting procedure is chosen here.
 
-
+### 1. Sorting Procedure:
 
 
 
