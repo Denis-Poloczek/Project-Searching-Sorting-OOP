@@ -21,9 +21,15 @@ The sorting procedure is chosen here.
 * manager.py
 
 ```python
-class Manager():
-  
-  def __init__(self):
-    self.variable = 0
+class Manager:
+
+    def __init__(self):
+        self.methods = {}
+        self.methods_details = {}
+
+    def get_available_methods(self):
+        print("The following methods are available: ")
+        for method in self.methods:
+            print(method)
     
 ```
