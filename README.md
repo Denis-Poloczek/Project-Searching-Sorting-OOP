@@ -1,4 +1,4 @@
-# AGH Final Project
+# AGH Final Project 🎓
 
 ## This codebase contains final project for bachlor's thesis
 
